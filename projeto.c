@@ -1,6 +1,6 @@
 #include <16F874.h>
 
-#device adc = 8
+#device adc=8
 #use delay(clock = 1000000)
 #fuses XT, NOWDT, NOPUT
 
