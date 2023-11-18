@@ -21,7 +21,7 @@ void main(){
 	
 	while (1) {
 		delay_ms(1);
-		yk = read_adc
+		yk = read_adc();
 	}
 
 }
