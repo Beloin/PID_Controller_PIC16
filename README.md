@@ -67,15 +67,4 @@ dz =
  
 Sample time: 0.0001 seconds
 Discrete-time transfer function.
-
->> dz = c2d(newTf, 0.001, 'zoh')
-
-dz =
- 
-  0.05843
-  -------
-   z - 1
- 
-Sample time: 0.001 seconds
-Discrete-time transfer function.
 ```
