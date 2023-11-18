@@ -1,6 +1,9 @@
 # A Program using PIC32 MCU implementing a PI controller
 
-We used MatLab to calculate the PI controller discrete equation
+Schematics:
+![Proteus Project](./proj_3.bmp)
+
+We used MatLab to calculate the PI controller discrete equation:
 
 C = K p + K i I / F ( z ) + K d T f 
 
