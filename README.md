@@ -3,9 +3,15 @@
 Schematics:
 ![Proteus Project](./proj_3.bmp)
 
+Working Simulation:
+![Proteus Simulation](./sample.png)
+
 We used MatLab to calculate the PI controller discrete equation:
 
 C = K p + K i I / F ( z ) + K d T f 
+
+
+### MatLab code helped the PI controller.
 
 ```matlab
 >> numC = [0 0 4.992];
