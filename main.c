@@ -21,7 +21,6 @@ void main()
 	setup_timer_2(T2_DIV_BY_4, 65, 1);
 	setup_ccp1(CCP_PWM);
 	set_pwm1_duty(127); // ALready sets initial value, as half of the input voltage.
-	enable_interrupts(GLOBAL | INT_TIMER2);
 
 	// TODO: Implement timer instead of delay... Timers rock!!
 	while (1)
