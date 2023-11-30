@@ -4,33 +4,33 @@
 #use delay(clock = 1000000)
 #fuses XT, NOWDT, NOPUT
 
-// Equation defined in README.md, found in matlab c2d(...)in non-canonical representation
-// uk = 0.05843*e_k1 - uk_1
+// Equation defined in README.md, found in matlab c2d(...) in non-canonical representation
+// uk = 0.05843*e_k1 + uk_1
 
 void main()
 {
 	int ref = 127;
 	float uk = 0, uk_1 = 0, ek = 0, ek_1 = 0, yk = 0;
-	char out;
+	unsigned char out;
 
 	setup_adc_ports(ALL_ANALOG);
 	setup_adc(ADC_CLOCK_INTERNAL);
-	set_adc_channel(0); // or 1?
+	set_adc_channel(0);
 
 	delay_ms(1);
-	setup_timer_2(T2_DIV_BY_4, 65, 1);
+	setup_timer_2(T2_DIV_BY_4, 65, 1); // 250Khz
 	setup_ccp1(CCP_PWM);
+	// 1ms -> 50% UP -> .5ms
 	set_pwm1_duty(127); // ALready sets initial value, as half of the input voltage.
 
-	// TODO: Implement timer instead of delay... Timers rock!!
 	while (1)
 	{
 		delay_ms(1); // So our "timer" is 1ms, since we calculated it in the Dz
 		yk = read_adc();
-		ek = ref - yk;				// ref is already in 8Bits format, but if it was voltage, we would need to convert 6v to 8 bits (Scales from 0-12v to 0-255)
-		uk = (0.05843 * ek_1) + uk_1; // TODO: Is uk_1 = 0 appropriate when the first data arrives? Should we use it as uk_1 = ref?
+		ek = ref - yk; // ref is already in 8Bits format, but if it was voltage, we would need to convert 6v to 8 bits (Scales from 0-12v to 0-255)
+		uk = (0.05843 * ek_1) + uk_1;
 
-		out = (int)uk;
+		out = (unsigned char)uk;
 		if (out > 255)
 			uk = 255;
 		if (out < 0)
