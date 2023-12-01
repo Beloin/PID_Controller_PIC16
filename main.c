@@ -25,10 +25,10 @@ void main()
 
 	while (1)
 	{
-		delay_ms(1); // So our "timer" is 1ms, since we calculated it in the Dz
+		delay_ms(1);
 		yk = read_adc();
-		ek = ref - yk; // ref is already in 8Bits format, but if it was voltage, we would need to convert 6v to 8 bits (Scales from 0-12v to 0-255)
-		uk = (0.05843 * ek_1) + uk_1;
+		ek = ref - yk;
+		uk = (0.005843 * ek_1) + uk_1;
 
 		out = (unsigned char)uk;
 		if (out > 255)
